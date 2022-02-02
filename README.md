@@ -172,6 +172,7 @@ These are the actions I implemented:
 - `interactive`: Interactively apply rules to the starting variable. A parse tree diagram is generated upon exiting.
 - `cyk`: Check if a word is accepted by the input CFG using the CYK algorithm. Produces a CYK table and a parse tree image.
   - Note: The input must be in Chomsky normal form (use the `cnf` action for this).
+  - ![](docs/cfg01b_interactive_diagram.png)
 - `clone`: Clone the input to a new file.
 - `clone_char`: Clone the input to a new file, using the "char" format.
 - `clone_spaced`: Clone the input to a new file, using the "spaced" format.
