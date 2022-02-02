@@ -25,7 +25,7 @@ def process(cfg: CFG, original_path: Path):
         print("Input the word to test: (Format is 'spaced!')")
         word_str = input("  > ")
         word = spaced_exclam_to_word(word_str)
-        print("Is this correct?")
+        print("Is this the word you want to test? (y/n)")
         print(word)
         if ask_yes_no():
             break
