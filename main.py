@@ -77,9 +77,6 @@ except KeyError:
     )
 
 parsed_thing = parse_fn(parse_lines)
-# hacked-in starting variable check
-if not parsed_thing.start_variable:
-    raise Exception("No starting variable defined! Aborting...")
 print("Parsing success!")
 
 for action in meta_data["action"]:
