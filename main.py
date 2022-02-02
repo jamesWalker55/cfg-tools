@@ -26,46 +26,37 @@ parse_lines, meta_lines = tools.fromtext.text_to_lines_lists(full_text)
 meta_data = tools.fromtext.parse_meta_lines(meta_lines)
 
 # quit if meta data isn't enough
-if len(meta_data["mode"]) == 0:
-    print(f"Mode is unspecified! Include `mode xxx` in the text file.")
-    quit()
-elif len(meta_data["format"]) == 0:
+if len(meta_data["format"]) == 0:
     print(f"Format is unspecified! Include `format xxx` in the text file.")
     quit()
 
 # define parsers and processors
-if meta_data["mode"][0] == "cfg":
-    parsers = {
-        "char": lambda pl: tools.cfg_parse.lines_to_cfg(
-            pl, tools.cfg_parse.chars_to_word
-        ),
-        "spaced": lambda pl: tools.cfg_parse.lines_to_cfg(
-            pl, tools.cfg_parse.spaced_to_word
-        ),
-        "spaced!": lambda pl: tools.cfg_parse.lines_to_cfg(
-            pl, tools.cfg_parse.spaced_exclam_to_word
-        ),
-    }
-    processors = {
-        "clone": processors_cfg.clone.process,
-        "clone_char": lambda cfg, path: processors_cfg.clone.process(cfg, path, "char"),
-        "clone_spaced": lambda cfg, path: processors_cfg.clone.process(
-            cfg, path, "spaced"
-        ),
-        "clone_spaced!": lambda cfg, path: processors_cfg.clone.process(
-            cfg, path, "spaced!"
-        ),
-        "latex": processors_cfg.latex.process,
-        "interactive": processors_cfg.interactive.process,
-        "cnf": processors_cfg.cnf.process,
-        "pda": processors_cfg.pda.process,
-        "cyk": processors_cfg.cyk.process,
-    }
-elif meta_data["mode"][0] == "pda":
-    parsers = {}
-    processors = {}
-else:
-    raise tools.fromtext.MetaError(f"Unknown mode {meta_data['mode']}")
+parsers = {
+    "char": lambda pl: tools.cfg_parse.lines_to_cfg(
+        pl, tools.cfg_parse.chars_to_word
+    ),
+    "spaced": lambda pl: tools.cfg_parse.lines_to_cfg(
+        pl, tools.cfg_parse.spaced_to_word
+    ),
+    "spaced!": lambda pl: tools.cfg_parse.lines_to_cfg(
+        pl, tools.cfg_parse.spaced_exclam_to_word
+    ),
+}
+processors = {
+    "clone": processors_cfg.clone.process,
+    "clone_char": lambda cfg, path: processors_cfg.clone.process(cfg, path, "char"),
+    "clone_spaced": lambda cfg, path: processors_cfg.clone.process(
+        cfg, path, "spaced"
+    ),
+    "clone_spaced!": lambda cfg, path: processors_cfg.clone.process(
+        cfg, path, "spaced!"
+    ),
+    "latex": processors_cfg.latex.process,
+    "interactive": processors_cfg.interactive.process,
+    "cnf": processors_cfg.cnf.process,
+    "pda": processors_cfg.pda.process,
+    "cyk": processors_cfg.cyk.process,
+}
 
 # parse input lines
 print("Parsing input file...")
@@ -73,7 +64,7 @@ try:
     parse_fn = parsers[meta_data["format"][0]]
 except KeyError:
     raise tools.fromtext.MetaError(
-        f"Unknown format {meta_data['format'][0]} for mode {meta_data['mode']}"
+        f"Unknown format {meta_data['format'][0]}"
     )
 
 parsed_thing = parse_fn(parse_lines)
@@ -84,7 +75,7 @@ for action in meta_data["action"]:
     try:
         action_fn = processors[action]
     except KeyError:
-        print(f"Unknown action '{action}' for mode {meta_data['mode']}")
+        print(f"Unknown action '{action}'")
         continue
     action: str
     print(f"{action.capitalize()}: Starting...")
