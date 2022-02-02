@@ -26,10 +26,7 @@ parse_lines, meta_lines = tools.fromtext.text_to_lines_lists(full_text)
 meta_data = tools.fromtext.parse_meta_lines(meta_lines)
 
 # quit if meta data isn't enough
-if len(meta_data["mode"]) == 0:
-    print(f"Mode is unspecified! Include `mode xxx` in the text file.")
-    quit()
-elif len(meta_data["format"]) == 0:
+if len(meta_data["format"]) == 0:
     print(f"Format is unspecified! Include `format xxx` in the text file.")
     quit()
 
