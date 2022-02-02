@@ -1,7 +1,7 @@
 # if __name__ == "__main__": import sys, os ; sys.path.insert(1, os.path.join(sys.path[0], '..'))
 
 
-META_KEYWORDS = ("mode", "format", "action", "#")
+META_KEYWORDS = ("format", "action", "#")
 
 
 class MetaError(Exception):
