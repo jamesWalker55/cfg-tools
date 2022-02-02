@@ -1,0 +1,6 @@
+mode cfg
+format char
+action nil
+
+S -> X2 | S1
+X -> 0XS0 | 01 | e

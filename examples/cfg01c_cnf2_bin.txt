@@ -1,0 +1,15 @@
+start S0
+
+S -> X 2 | S 1
+X1 -> S 0
+X -> 0 1 | e | 0 X0
+X0 -> X X1
+S0 -> S
+
+$$\begin{aligned}
+S &\rightarrow X 2 \mid S 1 \\
+X_1 &\rightarrow S 0 \\
+X &\rightarrow 0 1 \mid \epsilon \mid 0 X_0 \\
+X_0 &\rightarrow X X_1 \\
+S_0 &\rightarrow S \\
+\end{aligned}$$

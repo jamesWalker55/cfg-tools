@@ -1,0 +1,11 @@
+start S0
+
+X -> 0 X S 0 | 0 1 | e
+S -> X 2 | S 1
+S0 -> S
+
+$$\begin{aligned}
+X &\rightarrow 0 X S 0 \mid 0 1 \mid \epsilon \\
+S &\rightarrow X 2 \mid S 1 \\
+S_0 &\rightarrow S \\
+\end{aligned}$$
