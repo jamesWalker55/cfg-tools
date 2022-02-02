@@ -1,6 +1,5 @@
 # cfg from w8 notes
 
-mode cfg
 format char
 action cnf
 

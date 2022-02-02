@@ -1,7 +1,6 @@
 # example cfg
 # to test min_format
 
-mode cfg
 format spaced
 action cnf
 

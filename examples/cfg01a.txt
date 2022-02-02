@@ -1,7 +1,6 @@
 # example cfg
 # from coursework 2 q1b
 
-mode cfg
 format char
 
 S -> X2 | S1
