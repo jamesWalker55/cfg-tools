@@ -31,38 +31,32 @@ if len(meta_data["format"]) == 0:
     quit()
 
 # define parsers and processors
-if meta_data["mode"][0] == "cfg":
-    parsers = {
-        "char": lambda pl: tools.cfg_parse.lines_to_cfg(
-            pl, tools.cfg_parse.chars_to_word
-        ),
-        "spaced": lambda pl: tools.cfg_parse.lines_to_cfg(
-            pl, tools.cfg_parse.spaced_to_word
-        ),
-        "spaced!": lambda pl: tools.cfg_parse.lines_to_cfg(
-            pl, tools.cfg_parse.spaced_exclam_to_word
-        ),
-    }
-    processors = {
-        "clone": processors_cfg.clone.process,
-        "clone_char": lambda cfg, path: processors_cfg.clone.process(cfg, path, "char"),
-        "clone_spaced": lambda cfg, path: processors_cfg.clone.process(
-            cfg, path, "spaced"
-        ),
-        "clone_spaced!": lambda cfg, path: processors_cfg.clone.process(
-            cfg, path, "spaced!"
-        ),
-        "latex": processors_cfg.latex.process,
-        "interactive": processors_cfg.interactive.process,
-        "cnf": processors_cfg.cnf.process,
-        "pda": processors_cfg.pda.process,
-        "cyk": processors_cfg.cyk.process,
-    }
-elif meta_data["mode"][0] == "pda":
-    parsers = {}
-    processors = {}
-else:
-    raise tools.fromtext.MetaError(f"Unknown mode {meta_data['mode']}")
+parsers = {
+    "char": lambda pl: tools.cfg_parse.lines_to_cfg(
+        pl, tools.cfg_parse.chars_to_word
+    ),
+    "spaced": lambda pl: tools.cfg_parse.lines_to_cfg(
+        pl, tools.cfg_parse.spaced_to_word
+    ),
+    "spaced!": lambda pl: tools.cfg_parse.lines_to_cfg(
+        pl, tools.cfg_parse.spaced_exclam_to_word
+    ),
+}
+processors = {
+    "clone": processors_cfg.clone.process,
+    "clone_char": lambda cfg, path: processors_cfg.clone.process(cfg, path, "char"),
+    "clone_spaced": lambda cfg, path: processors_cfg.clone.process(
+        cfg, path, "spaced"
+    ),
+    "clone_spaced!": lambda cfg, path: processors_cfg.clone.process(
+        cfg, path, "spaced!"
+    ),
+    "latex": processors_cfg.latex.process,
+    "interactive": processors_cfg.interactive.process,
+    "cnf": processors_cfg.cnf.process,
+    "pda": processors_cfg.pda.process,
+    "cyk": processors_cfg.cyk.process,
+}
 
 # parse input lines
 print("Parsing input file...")
