@@ -16,6 +16,11 @@ def ask_yes_no():
 
 
 def process(cfg: CFG, original_path: Path):
+    if not cfg.start_variable:
+        print("Start variable required for this action!")
+        print("Please define `start xxx` in the input file")
+        return
+
     while True:
         print("Input the word to test: (Format is 'spaced!')")
         word_str = input("  > ")
