@@ -64,7 +64,7 @@ try:
     parse_fn = parsers[meta_data["format"][0]]
 except KeyError:
     raise tools.fromtext.MetaError(
-        f"Unknown format {meta_data['format'][0]} for mode {meta_data['mode']}"
+        f"Unknown format {meta_data['format'][0]}"
     )
 
 parsed_thing = parse_fn(parse_lines)
@@ -75,7 +75,7 @@ for action in meta_data["action"]:
     try:
         action_fn = processors[action]
     except KeyError:
-        print(f"Unknown action '{action}' for mode {meta_data['mode']}")
+        print(f"Unknown action '{action}'")
         continue
     action: str
     print(f"{action.capitalize()}: Starting...")
