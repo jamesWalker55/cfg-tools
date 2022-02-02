@@ -16,12 +16,6 @@ ap = argparse.ArgumentParser(
 ap.add_argument(
     "path", metavar="txt_path", type=Path, help="Path to the *.txt file to process"
 )
-ap.add_argument(
-    "skip",
-    metavar="skip_processing",
-    type=int,
-    help="Whether to enable debug mode or not",
-)
 cmd_args = ap.parse_args()
 
 # load file
